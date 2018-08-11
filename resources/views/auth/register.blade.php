@@ -68,6 +68,14 @@
                                 </button>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <a href="{{ route('socialite.login', 'github') }}" class="btn btn-github"><button type="button" class="btn btn-success"><i class="fab fa-github"></i> Github</button></a>
+                                <a href="{{ route('socialite.login', 'twitter') }}" class="btn btn-twitter"><button type="button" class="btn btn-primary"><i class="fab fa-twitter"></i> Twitter</button></a>
+                                <a href="{{ route('socialite.login', 'google') }}" class="btn btn-google"><button type="button" class="btn btn-danger"><i class="fab fa-google"></i> Google</button></a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
