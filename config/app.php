@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env(env('APP_ENV') == 'local' ? 'APP_LOCAL_URL' : 'APP_PRODUCTION_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE'),
 
     /*
     |--------------------------------------------------------------------------

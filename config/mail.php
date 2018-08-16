@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env(env('APP_ENV') == 'local' ? 'MAIL_LOCAL_HOST' : 'MAIL_PRODUCTION_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env(env('APP_ENV') == 'local' ? 'MAIL_LOCAL_PORT' : 'MAIL_PRODUCTION_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env(env('APP_ENV') == 'local' ? 'MAIL_LOCAL_USERNAME' : 'MAIL_PRODUCTION_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env(env('APP_ENV') == 'local' ? 'MAIL_LOCAL_PASSWORD' : 'MAIL_PRODUCTION_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

@@ -1,7 +1,6 @@
 <?php
 
-return [
-
+$services = [
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -30,15 +29,9 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
-    ],
-
-    'github' => [
-        'client_id'     => env('GITHUB_CLIENT_ID'),
-        'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect'      => env('GITHUB_REDIRECT_URL'),
     ],
 
     'google' => [
@@ -52,5 +45,20 @@ return [
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
         'redirect'      => env('TWITTER_REDIRECT_URL'),
     ],
-
 ];
+
+if (env('APP_ENV') == 'local') {
+    $services['github'] = [
+        'client_id'     => env('GITHUB_LOCAL_CLIENT_ID'),
+        'client_secret' => env('GITHUB_LOCAL_CLIENT_SECRET'),
+        'redirect'      => env('GITHUB_LOCAL_REDIRECT_URL'),
+    ];
+}else{
+    $services['github'] = [
+        'client_id'     => env('GITHUB_PRODUCTION_CLIENT_ID'),
+        'client_secret' => env('GITHUB_PRODUCTION_CLIENT_SECRET'),
+        'redirect'      => env('GITHUB_PRODUCTION_REDIRECT_URL'),
+    ];
+}
+
+return $services;
