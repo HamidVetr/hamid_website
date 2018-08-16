@@ -19,5 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('socialite.login');
-Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('socialite.redirect');
+Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('socialite.login');
+Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('socialite.redirect');
+
+
+Route::group(['namespace' => 'VisitorControllers'], function (){
+    Route::get('/contact-me', 'ContactMeController@create')->name('visitor.contact-me.create');
+    Route::post('/contact-me', 'ContactMeController@store')->name('visitor.contact-me.store');
+});
